@@ -1,3 +1,16 @@
-body{
-    background-image: url(http://www.textures4photoshop.com/tex/thumbs/matrix-code-animation-gif-free-animated-background-716.gif)
+h1{
+    color:white;
+    
+}
+
+.main{
+   background-color: red;
+    
+    margin:auto;
+    margin-top:20%;
+    width:300px;
+    height:150px;
+
+    line-height: 4;
+    text-align: center;
 }
