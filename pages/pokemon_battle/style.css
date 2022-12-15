@@ -1,0 +1,27 @@
+body,html{
+    margin:0;   
+    height:100%;
+}
+
+div{
+    float:left;
+    color:black;
+
+    margin:auto;
+    text-align: center;
+}
+
+.HumanPage{
+    background-color: aliceblue;
+    width:49.27%;
+    height:100%;
+    
+    border-right: 10px solid black;
+
+}
+
+.ComputerPage{
+    background-color: greenyellow;
+    width:50%;
+    height:100%;
+}
