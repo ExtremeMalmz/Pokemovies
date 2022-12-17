@@ -2,7 +2,7 @@
 
 const HUMANPOKEMONLINKS = [];
 //as a general rule the computer should have worse pokemon than the human 
-const COMPUTERPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu"];
+const COMPUTERPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto"];
 
 const COMPUTER = "COMPUTER", HUMAN = "HUMAN";
 
@@ -34,13 +34,21 @@ function setPokemonCard(randomIndex, humanOrComputer){
         //fetches data from the array index which is a link to the pokemon page 
         fetch(randomIndex)
         .then((response) => response.json()).then((data) =>{
-            
+            console.log(data);
+
+            //this is the pokemon image
             document.getElementById("computerPokemonImage").src = data.sprites.other["official-artwork"].front_default;
-        
+            //pokemon name
+            document.getElementById("computerPokemonName").innerHTML = "Name: " + data.forms[0].name;
+            //pokemon HP
+            document.getElementById("computerDefenseStats").innerHTML = "HP stats: " + data.stats[0].base_stat;
+            //pokemon attack stats
+            document.getElementById("computerAttackStats").innerHTML = "Attack stats: " + data.stats[1].base_stat;
+            //pokemon defense stats
+            document.getElementById("computerAttackStats").innerHTML = "Defense stats: " + data.stats[2].base_stat;
         })
     }
-
-    if(humanOrComputer == "HUMAN"){
+    else if(humanOrComputer == "HUMAN"){
         //todo  
     }
 }
@@ -62,7 +70,7 @@ function main(){
     /*
     * main of the pokemon battle, here the cards for the human and computer are generated when loading the page
     */
-    document.getElementById("test").innerHTML = "Hello There";
+
 
     createComputerPokemon();
     

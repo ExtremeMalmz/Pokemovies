@@ -3,6 +3,7 @@
 body,html{
     margin:0;   
     height:100%;
+    background-color: greenyellow;
 }
 
 div{
@@ -27,7 +28,34 @@ div{
     height:100%;
 }
 
+
+
 img{
+
     max-width: 475px;
     max-height: 475px;
+}
+
+#ComputerPokemonImage{
+    margin: auto;
+    width: 110%;
+
+    border: 10px solid black;
+    border-left: 10px solid greenyellow;
+}
+
+#ComputerPokemonCardInformation{
+    /*
+    How to center this? 
+    */
+    width: 110%;
+
+    margin: auto;
+    justify-content: center;
+
+
+    border: 10px solid black;
+
+    border-left: 10px solid greenyellow;
+    
 }
