@@ -33,9 +33,14 @@ img{
 .HumanPage{
     /* the left side of the screen with the humans card */
     background-color:cornsilk ;
-    width:50%;
+    width:49.3%;
     height:100%;
-    overflow: hidden;
+    overflow:visible;
+}
+
+#HumanPokemonCard{
+    /* The 50% of the page below the Your card */
+    background-color:cornsilk ;
 }
 
 #HumanPokemonImage{
@@ -47,6 +52,7 @@ img{
     margin: auto;
     width: 98%;
     border: 10px solid black;
+    border-bottom: 10px solid black;
 }
 
 #HumanPokemonCardInformation{
@@ -70,7 +76,7 @@ img{
 .ComputerPage{
     /* the computers page of the screen (the 50% of the right side) */
     background-color: greenyellow;
-    width:48.6%;
+    width:49.3%;
     height:100%;
 }
 
