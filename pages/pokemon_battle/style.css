@@ -28,8 +28,6 @@ div{
     height:100%;
 }
 
-
-
 img{
 
     max-width: 475px;
@@ -38,7 +36,7 @@ img{
 
 #ComputerPokemonImage{
     margin: auto;
-    width: 110%;
+    width: 100%;
 
     border: 10px solid black;
     border-left: 10px solid greenyellow;
@@ -48,7 +46,7 @@ img{
     /*
     How to center this? 
     */
-    width: 110%;
+    width: 100%;
 
     margin: auto;
     justify-content: center;

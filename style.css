@@ -23,5 +23,9 @@ body{
     /* This centers text */
     line-height: 4;
     text-align: center;
+}
 
+h1 {
+    /* Turns the mouse icon pointer into a pointer icon */
+    cursor:pointer;
 }
