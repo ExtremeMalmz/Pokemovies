@@ -1,0 +1,100 @@
+/*Webbtjänster - Grupp 1 - Made by Eric Malmström and Anita Olsson*/
+
+body,html{
+    /* basic stuff to get things to work right */
+    margin:0;  
+    width:100%;
+    height:100%; 
+    background-color: greenyellow;
+}
+
+div{
+    /* All divs are to have these properties */
+    float:left;
+    color:black;
+    margin:auto;
+    text-align: center;
+}
+
+h1{
+    /* All h1 elements */
+    text-align: center;
+    margin:10px;
+}
+
+img{
+    /* All images are this size */
+    max-width: 475px;
+    max-height: 475px;
+    min-width: 475px;
+    min-height: 475px;
+}
+
+.HumanPage{
+    /* the left side of the screen with the humans card */
+    background-color:cornsilk ;
+    width:50%;
+    height:100%;
+    overflow: hidden;
+}
+
+#HumanPokemonImage{
+    /* properties for the human pokemon image */
+    /* this makes the image into a reflection*/
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+
+    margin: auto;
+    width: 98%;
+    border: 10px solid black;
+}
+
+#HumanPokemonCardInformation{
+    /* The information which is shown on the pokemon card like HP defense attack stats and name */
+    width: 98%;
+    border: 10px solid black;
+}
+
+#HumanSideFightButton{
+    /* human side of the fight button */
+    width:100%;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    color:white;
+    background-color: red;
+    border-left: 20px solid black;
+    cursor:pointer;
+}
+
+.ComputerPage{
+    /* the computers page of the screen (the 50% of the right side) */
+    background-color: greenyellow;
+    width:48.6%;
+    height:100%;
+}
+
+#ComputerPokemonImage{
+    /* the properties for the computers pokemon image */
+    margin: auto;
+    width: 100%;
+    border: 10px solid black;
+}
+
+#ComputerPokemonCardInformation{
+    /* Information on the computers pokemon card */
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+    border: 10px solid black;
+}
+
+#ComputerSideFightButton{
+    /* the computer side of the Click to fight div */
+    width:100%;
+    font-weight: bold;
+    color:white;
+    background-color: red;
+    border-right: 20px solid black;
+    cursor:pointer;
+}
