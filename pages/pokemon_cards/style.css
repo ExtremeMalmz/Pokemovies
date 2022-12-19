@@ -104,3 +104,11 @@ img{
     border-right: 20px solid black;
     cursor:pointer;
 }
+
+@media (max-width:1000px){
+    /* when screen gets to less than 1000px this stuff happens */
+    body{
+        /* makes overflow hidden to make the html look presentable */
+        overflow:hidden;
+    }
+}
