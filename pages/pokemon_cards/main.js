@@ -1,7 +1,7 @@
 //Webbtjänster - Grupp 1 - Made by Eric Malmström and Anita Olsson
 
 //pokemon cards for the human
-const HUMANPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto"];
+const HUMANPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto","https:pokeapi.co/api/v2/pokemon/stunfisk"];
 //pokemon cards for the computer
 const COMPUTERPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/stunfisk", "https:pokeapi.co/api/v2/pokemon/paras"];
 //computer and human variables which are equal to the string of their name
@@ -62,6 +62,12 @@ function setPokemonCard(randomIndex, humanOrComputer){
         document.getElementById(pokemonAttackStats).innerHTML = "Attack stats: " + data.stats[1].base_stat;
         //pokemon defense stats
         document.getElementById(pokemonDefenseStats).innerHTML = "Defense stats: " + data.stats[2].base_stat;
+
+        //set the pokemon type 
+        if(humanOrComputer == "HUMAN"){
+            localStorage.setItem("pokemonType", data.types[0].type.name)
+            //console.log(data.types[0].type.name);
+        }
     })
 }
 
@@ -95,9 +101,6 @@ function main(){
     createComputerPokemon();
     //creates the humans pokemon card
     createHumanPokemon();
-    
-    //this is how we will send data to the others
-    //localStorage.setItem("serialNumber", "abc123def456")
 }
 
 function pokemonAttack(hp, defensepoints, attackpoints){
@@ -108,22 +111,24 @@ function pokemonAttack(hp, defensepoints, attackpoints){
     * @param {attackpoints} the offensive pokemons attack points
     */
 
+    //console.log("PARAMETERS-hp: " + hp + " d: " + defensepoints + " a:" + attackpoints);
+
     //random integers for both attack and defense are made here
     var newAttackPoints = Math.floor(Math.random() * attackpoints);
     var newDefensePoints = Math.floor(Math.random() * defensepoints);
     
     if(newDefensePoints>=newAttackPoints){
         //if the defense is greater than the attackpoints then no damage is taken
+        //console.log("no damage");
         return hp;
     }
     else{
         //if it isnt then the attack points are subtracted by the defense points and then minused by the hp
-        console.log("fight: " + hp + " " + newAttackPoints + " " + newDefensePoints);
+        //console.log("fight: " + hp + " " + newAttackPoints + " " + newDefensePoints);
+        //  console.log( hp - (newAttackPoints - newDefensePoints));
 
-        console.log( hp - (newAttackPoints - newDefensePoints));
         return hp - (newAttackPoints - newDefensePoints);
     }
-
 }
 
 function startPokemonBattle(){
@@ -135,31 +140,38 @@ function startPokemonBattle(){
     var humanPokemonName = document.getElementById("HumanPokemonName").textContent;
     var humanPokemonHP = parseInt(document.getElementById("HumanHPStats").textContent.replace(/\D/g,''));
     var humanPokemonDefense = parseInt(document.getElementById("HumanDefenseStats").textContent.replace(/\D/g,''));
-    var humanPokemonAttack = parseInt(document.getElementById("computerAttackStats").textContent.replace(/\D/g,''));
+    var humanPokemonAttack = parseInt(document.getElementById("HumanAttackStats").textContent.replace(/\D/g,''));
 
     var computerPokemonHP = parseInt(document.getElementById("computerHPStats").textContent.replace(/\D/g,''));
     var computerPokemonDefense = parseInt(document.getElementById("computerAttackStats").textContent.replace(/\D/g,''));
     var computerPokemonAttack = parseInt(document.getElementById("computerDefenseStats").textContent.replace(/\D/g,''));
 
     var originalHumanPokemonHP = humanPokemonHP;
-
-    //this how you do it
-    //var humanPokemonHP = document.getElementById("HumanHPStats").textContent.replace(/\D/g,'');
+    
+    //original health of the pokemon
+    if(localStorage.getItem("originalHealth") == null){
+        localStorage.setItem("originalHealth", originalHumanPokemonHP);
+    }
 
     //--- `***GAME STARTS HERE*** ---
-
-    //checks to see if computers pokemons health is greater than 0
-    if(computerPokemonHP <= 0){
-        localStorage.setItem("winOrLose","WIN");
-        localStorage.setItem("totalHealthLeft", humanPokemonHP/originalHumanPokemonHP);
-        localStorage.setItem("pokemonName", humanPokemonName);
-
-        console.log("Human won!");
-        console.log(humanPokemonHP/originalHumanPokemonHP);
-    }
+    var victory = false;
 
     //the human pokemon attacks the computers
     computerPokemonHP = pokemonAttack(computerPokemonHP, computerPokemonDefense, humanPokemonAttack);
+    document.getElementById("computerHPStats").innerHTML = "HP: " + computerPokemonHP;
+
+    //checks to see if computers pokemons health is greater than 0
+    console.log("Computer hp: " +  computerPokemonHP + " Human HP: " + humanPokemonHP);
+    if(computerPokemonHP <= 0){
+        //console.log("HUMAN WON");
+        localStorage.setItem("winOrLose","WIN");
+        localStorage.setItem("totalHealthLeft", humanPokemonHP/originalHumanPokemonHP);
+        localStorage.setItem("pokemonName", humanPokemonName);
+    }
+
+    //the computer pokemon attacks the humans
+    humanPokemonHP = pokemonAttack(humanPokemonHP,humanPokemonDefense,computerPokemonAttack);
+    document.getElementById("HumanHPStats").innerHTML = "HP: " + humanPokemonHP;
 
      //if the human pokemon loses this happens
     if(humanPokemonHP <= 0){
@@ -167,42 +179,47 @@ function startPokemonBattle(){
         console.log("COMPUTER WON");
     }
     
-    //the computer pokemon attacks the humans
-    humanPokemonHP = pokemonAttack(humanPokemonHP,humanPokemonDefense,computerPokemonAttack);
-
     //this is just a sort of visual metaphor for the attacks
     //if computer pokemon image is its original color 
     if(document.getElementById("HumanPokemonImage").style.backgroundColor == "cornsilk"){
-        console.log("asda");
-
         //set HTML elements for the human pokemon
-        document.getElementById("HumanHPStats").innerHTML = "HP: " + computerPokemonHP;
         document.getElementById("HumanHPStats").style.color = "red";
         document.getElementById("HumanPokemonImage").style.backgroundColor = "black";
         //reset the computers HTML elements
         document.getElementById("computerHPStats").style.color = "black";
         document.getElementById("ComputerPokemonImage").style.backgroundColor = "greenyellow";
     }
-    //if the computers pokemon is black
+    //if the computers pokemon is black background
     else{
-        console.log("bsda");
         //set the HTML elements to their updated values for the computer
-        document.getElementById("computerHPStats").innerHTML = "HP: " + computerPokemonHP;
         document.getElementById("computerHPStats").style.color = "red";
         document.getElementById("ComputerPokemonImage").style.backgroundColor = "black";
         //reset the humans image background color
         document.getElementById("HumanHPStats").style.color = "black";
         document.getElementById("HumanPokemonImage").style.backgroundColor = "cornsilk";
+    }
 
-        
+    //if the computer pokemon faints
+    if(computerPokemonHP <= 0){
+        localStorage.setItem("winOrLose","WIN");
+        //this is the score, *100 to make it into a good integer
+        localStorage.setItem("totalHealthLeft", (humanPokemonHP/originalHumanPokemonHP)*100);
+        localStorage.setItem("pokemonName", humanPokemonName);
+
+        victory = true;
     }
     
-    //if you want to see the battle in the console uncomment this
-    //console.log("computermon " + computerPokemonHP);
-    //console.log("humanmon " + humanPokemonHP);
+     //if the human pokemon loses this happens
+     if(humanPokemonHP <= 0){
+        localStorage.setItem("winOrLose","LOSE");
+        victory = true;
+    }
 
-    //after battle is won send em here
-    //location.href = "./../pokemon_battle/battleresults.html";
+    //if the game is won they get sent to the movie reccomenadtions
+    if(victory){
+        location.href = "./../movie_reccomendation/moviereccomendation.html";
+    }
+    
 }
 
 main();
