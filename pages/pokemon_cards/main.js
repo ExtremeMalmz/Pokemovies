@@ -1,7 +1,7 @@
 //Webbtjänster - Grupp 1 - Made by Eric Malmström and Anita Olsson
 
 //pokemon cards for the human
-const HUMANPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto","https:pokeapi.co/api/v2/pokemon/stunfisk"];
+const HUMANPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto"];
 //pokemon cards for the computer
 const COMPUTERPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/stunfisk", "https:pokeapi.co/api/v2/pokemon/paras"];
 //computer and human variables which are equal to the string of their name
