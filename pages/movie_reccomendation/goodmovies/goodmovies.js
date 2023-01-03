@@ -139,6 +139,13 @@ function getMovies(url) {
 	})
 }
 
+function getMovieGenreByID(genreNumID) {
+	//searc the genre array, find id and return the name
+	if (genreNumID == 16) {
+		return "Super fun action";
+	}
+}
+
 function showMovies(data) {
 	main.innerHTML = '';
 	var newMovieAverage = 0;
@@ -146,15 +153,19 @@ function showMovies(data) {
 
 	data.forEach(movie => {
 
-		const { title, poster_path, vote_average } = movie;
+		const { title, poster_path, vote_average, genre_ids } = movie;
 		const movieElem = document.createElement('div');
 		movieElem.classList.add('movie');
+
+		//find the genre
+		var movieGenre = getMovieGenreByID(genre_ids[0])
 		movieElem.innerHTML =
 			`
 			<img src="${IMG_URL + poster_path}" alt="${title}">
 
 			<div class="movie-info">
 				<h3>${title}</h3>
+				<h3>${movieGenre}</h3>
 				<span  class="${getcolor(vote_average)}">${vote_average} </span>
 				
 			</div>
@@ -171,6 +182,7 @@ function showMovies(data) {
 
 
 			console.log("AAAAAAA");
+			console.log(genre_ids);
 			console.log(vote_average);
 			currentMovieAverage = parseInt(vote_average);
 		}
