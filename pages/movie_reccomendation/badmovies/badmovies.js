@@ -169,9 +169,6 @@ function showMovies(data) {
 			main.appendChild(movieElem);
 			main.replaceChildren(movieElem);
 
-
-			console.log("AAAAAAA");
-			console.log(vote_average);
 			currentMovieAverage = parseInt(vote_average);
 		}
 		else {

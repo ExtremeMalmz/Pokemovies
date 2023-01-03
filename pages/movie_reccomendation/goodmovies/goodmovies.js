@@ -13,8 +13,10 @@ const API_URL = BASE_URL + '/discover/movie?sort_by=vote_average.desc&' + API_KE
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 //movie keys
-const HORRORMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?sort_by=category.horror&?sort_by=popularity.desc&api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7";
-const ACTIONMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?sort_by=category.action&?sort_by=popularity.desc&api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7";
+//horror key is: 36
+const HORRORMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=36";
+//action key is: 28
+const ACTIONMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=28&sort_by=popularity.desc";
 
 
 const main = document.getElementById('main');
@@ -24,6 +26,7 @@ const tagsElem = document.getElementById('tags');
 //call the function and pass the url
 function therealmain(){
 	movieCategoryAPIkey = determineAPIkey();
+	console.log
 	getMovies(movieCategoryAPIkey);
 }
 
@@ -35,7 +38,7 @@ function determineAPIkey(){
 		return ACTIONMOVIEKEY;
 	}
 
-	if(localStorage.getItem("pokemonType") == "electric"){
+	if(localStorage.getItem("pokemonType") == "normal"){
 		return HORRORMOVIEKEY;
 	}
 }
@@ -43,6 +46,7 @@ function determineAPIkey(){
 
 //show the movies we get from data as respons, we fetch the url 
 function getMovies(url) {
+	console.log(url);
 	fetch(url).then(res => res.json()).then(data => {
 		console.log(data.results);
 		showMovies(data.results);
@@ -61,8 +65,15 @@ function checkIfMovieIsFound(){
 }
 
 function showMovies(data) {
+	var count = 0;
 	var foundMovie = false;
-	var gameScore = parseInt(localStorage.getItem("totalHealthLeft"));
+	var gameScore = localStorage.getItem("totalHealthLeft")/10;
+
+	
+
+	
+
+	
 
 	main.innerHTML = '';
 	data.forEach(movie => {
@@ -86,6 +97,9 @@ function showMovies(data) {
 	
 			`
 
+			//console.log(gameScore);
+			//console.log(vote_average);
+	
 			//if the movie under or the same as gamescore its set as the winner movie
 			if(vote_average <= gameScore){
 				//adds only one movie
@@ -94,33 +108,18 @@ function showMovies(data) {
 					foundMovie = true;
 					
 				}
+			}				
+			
+			count++
+			//console.log(count);
+
+			//if no movies have been found that match the criteria this If statement makes sure something is added
+			if(count==20 && !foundMovie){
+				console.log("no movie found");
+				main.appendChild(movieElem);
 			}
 			
-			
-
-				
-				
-			
-		/*
-		newMovieAverage = vote_average;
-
-		if (newMovieAverage >= currentMovieAverage) {
-			currentMovieAverage = newMovieAverage;
-
-			main.appendChild(movieElem);
-			main.replaceChildren(movieElem);
-
-
-			console.log("AAAAAAA");
-			console.log(genre_ids);
-			console.log(vote_average);
-			currentMovieAverage = parseInt(vote_average);
-		}
-		else {
-			console.log("nope");
-
-		}
-		*/
+		
 
 
 	})
