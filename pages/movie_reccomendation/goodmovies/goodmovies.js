@@ -13,6 +13,10 @@ const API_URL = BASE_URL + '/discover/movie?sort_by=vote_average.desc&' + API_KE
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 //movie keys
+
+
+ Version-3
+>>>>>>> b4d18e60ffc6a777774a94a25369d4de59781a86
 //fantasy key is: 14
 const FANTASYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=14&sort_by=popularity.desc";
 //horror key is: 36
@@ -33,6 +37,10 @@ const tagsElem = document.getElementById('tags');
 
 
 //call the function and pass the url
+<<<<<<< HEAD
+=======
+
+>>>>>>> b4d18e60ffc6a777774a94a25369d4de59781a86
 function therealmain(){
 	movieCategoryAPIkey = determineAPIkey();
 	getMovies(movieCategoryAPIkey);
@@ -82,6 +90,10 @@ function getMovieGenreByID(genreNumID) {
 	}
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b4d18e60ffc6a777774a94a25369d4de59781a86
 function checkIfMovieIsFound(){
 	console.log(document.getElementById("mainmovie").outerHTML);
 }
@@ -89,6 +101,10 @@ function checkIfMovieIsFound(){
 function showMovies(data) {
 	var count = 0;
 	var foundMovie = false;
+<<<<<<< HEAD
+=======
+
+>>>>>>> b4d18e60ffc6a777774a94a25369d4de59781a86
 	var gameScore = localStorage.getItem("totalHealthLeft")/10;
 
 	main.innerHTML = '';
@@ -113,6 +129,7 @@ function showMovies(data) {
 	
 			`
 
+<<<<<<< HEAD
 			//console.log(gameScore);
 			//console.log(vote_average);
 	
@@ -129,6 +146,25 @@ function showMovies(data) {
 			count++
 			//console.log(count);
 
+=======
+
+			//console.log(gameScore);
+			//console.log(vote_average);
+	
+			//if the movie under or the same as gamescore its set as the winner movie
+			if(vote_average <= gameScore){
+				//adds only one movie
+				if(!foundMovie){
+					main.appendChild(movieElem);
+					foundMovie = true;
+					
+				}
+			}				
+			
+			count++
+			//console.log(count);
+
+>>>>>>> b4d18e60ffc6a777774a94a25369d4de59781a86
 			//if no movies have been found that match the criteria this If statement makes sure something is added
 			if(count==20 && !foundMovie){
 				console.log("no movie found");
@@ -148,4 +184,8 @@ function getcolor(vote) {
 	}
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b4d18e60ffc6a777774a94a25369d4de59781a86
 therealmain();

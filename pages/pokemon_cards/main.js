@@ -1,9 +1,11 @@
 //Webbtjänster - Grupp 1 - Made by Eric Malmström and Anita Olsson
 
 //pokemon cards for the human
+//"https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto"
 const HUMANPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto"];
 //pokemon cards for the computer
-const COMPUTERPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/stunfisk", "https:pokeapi.co/api/v2/pokemon/paras"];
+//"https:pokeapi.co/api/v2/pokemon/stunfisk", "https:pokeapi.co/api/v2/pokemon/paras"
+const COMPUTERPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu"];
 //computer and human variables which are equal to the string of their name
 const COMPUTER = "COMPUTER", HUMAN = "HUMAN";
 
@@ -149,9 +151,11 @@ function startPokemonBattle() {
     var originalHumanPokemonHP = humanPokemonHP;
 
     //original health of the pokemon
-    if (localStorage.getItem("originalHealth") == null) {
+    if (localStorage.getItem("originalHealth") == "null") {
+        //console.log("OG HP set");   
         localStorage.setItem("originalHealth", originalHumanPokemonHP);
     }
+
 
     //--- `***GAME STARTS HERE*** ---
     var victory = false;
@@ -201,14 +205,29 @@ function startPokemonBattle() {
 
     //if the computer pokemon faints
     if (computerPokemonHP <= 0) {
+        console.log("HUMAN WINS");
+
         localStorage.setItem("winOrLose", "WIN");
+        
+        originalHumanPokemonHP = localStorage.getItem("originalHealth");
+        //console.log("ORIGINAL HP: " + originalHumanPokemonHP + " NEWHP: " + humanPokemonHP );
+        //console.log((humanPokemonHP / originalHumanPokemonHP) * 100);
         //this is the score, *100 to make it into a good integer
         localStorage.setItem("totalHealthLeft", (humanPokemonHP / originalHumanPokemonHP) * 100);
         localStorage.setItem("pokemonName", humanPokemonName);
+        
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         location.href = "./../movie_reccomendation/goodmovies/goodmovies.html";
         victory = true;
+
+        //need to set this to null for the game to work properly
+        localStorage.setItem("originalHealth","null");
     }
     else if (humanPokemonHP <= 0) {
+        //need to set this to null for the game to work properly
+        localStorage.setItem("originalHealth","null");
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         location.href = "./../movie_reccomendation/badmovies/badmovies.html";
     }
 
