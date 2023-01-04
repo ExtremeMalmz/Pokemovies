@@ -18,7 +18,6 @@ const HORRORMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a6
 //action key is: 28
 const ACTIONMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=28&sort_by=popularity.desc";
 
-
 const main = document.getElementById('main');
 const tagsElem = document.getElementById('tags');
 
