@@ -2,22 +2,26 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset = "UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <title>
-            Grupp1 Pokemon
-        </title>
-    </head>
-
+    <html lang = "en">
+        <head>
+            <meta charset = "UTF-8">
+            <meta name = "Viewport" content = "width = device-width, intial-scale=1.0">
+            <link rel="stylesheet" href="style.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
+            <title> Movie API app </title>
+        </head>
     <body>
-        <div class = "main" onclick="startTheGame()">
-            <h1>
-                Click to start the game!
-            </h1>
-        </div>
-        <!-- Test for the merge -->
-        <!--Why cant i merge?-->
+        <h1>Welcome to the this years 2023 Pokémoncard vs Computer Battle</h1>
+        <h2>Try your luck on getting the best movie recommendations!</h2>
+        <h3>But if you loose...there is another surprise awaiting....</h3>
+        <h4>Do you dare?</h4>
+        <div id = "StartButton" onclick = "startTheGame()">
+            <button class="back">
+                <span class="front">
+                  Yes I want to battle
+                </span>
+              </button>
+        </div>  
         <script src = "main.js"></script>
     </body>
 </html>
