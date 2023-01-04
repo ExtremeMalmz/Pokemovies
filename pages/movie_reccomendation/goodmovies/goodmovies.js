@@ -25,7 +25,6 @@ const tagsElem = document.getElementById('tags');
 //call the function and pass the url
 function therealmain(){
 	movieCategoryAPIkey = determineAPIkey();
-	console.log
 	getMovies(movieCategoryAPIkey);
 }
 
