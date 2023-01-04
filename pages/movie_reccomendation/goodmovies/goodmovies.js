@@ -13,6 +13,7 @@ const API_URL = BASE_URL + '/discover/movie?sort_by=vote_average.desc&' + API_KE
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 //movie keys
+ Version-3
 //fantasy key is: 14
 const FANTASYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=14&sort_by=popularity.desc";
 //horror key is: 36
@@ -33,6 +34,7 @@ const tagsElem = document.getElementById('tags');
 
 
 //call the function and pass the url
+
 function therealmain(){
 	movieCategoryAPIkey = determineAPIkey();
 	getMovies(movieCategoryAPIkey);
@@ -82,6 +84,7 @@ function getMovieGenreByID(genreNumID) {
 	}
 }
 
+
 function checkIfMovieIsFound(){
 	console.log(document.getElementById("mainmovie").outerHTML);
 }
@@ -89,6 +92,7 @@ function checkIfMovieIsFound(){
 function showMovies(data) {
 	var count = 0;
 	var foundMovie = false;
+
 	var gameScore = localStorage.getItem("totalHealthLeft")/10;
 
 	main.innerHTML = '';
@@ -112,6 +116,7 @@ function showMovies(data) {
 			</div>
 	
 			`
+
 
 			//console.log(gameScore);
 			//console.log(vote_average);
@@ -147,5 +152,6 @@ function getcolor(vote) {
 		return 'red'
 	}
 }
+
 
 therealmain();
