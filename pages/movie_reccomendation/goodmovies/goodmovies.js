@@ -13,32 +13,57 @@ const API_URL = BASE_URL + '/discover/movie?sort_by=vote_average.desc&' + API_KE
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 //movie keys
+ Version-3
+//fantasy key is: 14
+const FANTASYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=14&sort_by=popularity.desc";
 //horror key is: 36
-const HORRORMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=36";
+const HORRORMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=36&sort_by=popularity.desc";
 //action key is: 28
 const ACTIONMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=28&sort_by=popularity.desc";
+//animation key is: 16
+const ANIMATIONMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=16&sort_by=popularity.desc";
+//documentary key is: 99
+const DOCUMENTARYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=99&sort_by=popularity.desc";
+//war key is: 10752
+const WARMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=10752&sort_by=popularity.desc";
+//drama key is: 18
+const DRAMAMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=18&sort_by=popularity.desc";
 
 const main = document.getElementById('main');
 const tagsElem = document.getElementById('tags');
 
 
 //call the function and pass the url
-function therealmain() {
+
+function therealmain(){
 	movieCategoryAPIkey = determineAPIkey();
-	console.log
 	getMovies(movieCategoryAPIkey);
 }
 
-function determineAPIkey() {
+function determineAPIkey(){
 	var pokemonType = localStorage.getItem("pokemonType");
 	console.log(pokemonType);
 
-	if (localStorage.getItem("pokemonType") == "electric") {
+	if(localStorage.getItem("pokemonType") == "electric"){
 		return ACTIONMOVIEKEY;
 	}
-
-	if (localStorage.getItem("pokemonType") == "normal") {
+	else if(localStorage.getItem("pokemonType") == "normal"){
+		return ANIMATIONMOVIEKEY;
+	}
+	else if(localStorage.getItem("pokemonType") == "grass"){
+		return FANTASYMOVIEKEY;
+	}
+	else if(localStorage.getItem("pokemonType") == "fire"){
 		return HORRORMOVIEKEY;
+	}
+	else if(localStorage.getItem("pokemonType") == "water"){
+		return DOCUMENTARYMOVIEKEY;
+	}
+	else if(localStorage.getItem("pokemonType") == "fighting"){
+		return WARMOVIEKEY;
+	}
+	else if(localStorage.getItem("pokemonType") == "poison"){
+		return DRAMAMOVIEKEY;
 	}
 }
 
@@ -59,20 +84,16 @@ function getMovieGenreByID(genreNumID) {
 	}
 }
 
-function checkIfMovieIsFound() {
+
+function checkIfMovieIsFound(){
 	console.log(document.getElementById("mainmovie").outerHTML);
 }
 
 function showMovies(data) {
 	var count = 0;
 	var foundMovie = false;
-	var gameScore = localStorage.getItem("totalHealthLeft") / 10;
 
-
-
-
-
-
+	var gameScore = localStorage.getItem("totalHealthLeft")/10;
 
 	main.innerHTML = '';
 	data.forEach(movie => {
@@ -96,31 +117,28 @@ function showMovies(data) {
 	
 			`
 
-		//console.log(gameScore);
-		//console.log(vote_average);
 
-		//if the movie under or the same as gamescore its set as the winner movie
-		if (vote_average <= gameScore) {
-			//adds only one movie
-			if (!foundMovie) {
+			//console.log(gameScore);
+			//console.log(vote_average);
+	
+			//if the movie under or the same as gamescore its set as the winner movie
+			if(vote_average <= gameScore){
+				//adds only one movie
+				if(!foundMovie){
+					main.appendChild(movieElem);
+					foundMovie = true;
+					
+				}
+			}				
+			
+			count++
+			//console.log(count);
+
+			//if no movies have been found that match the criteria this If statement makes sure something is added
+			if(count==20 && !foundMovie){
+				console.log("no movie found");
 				main.appendChild(movieElem);
-				foundMovie = true;
-
 			}
-		}
-
-		count++
-		//console.log(count);
-
-		//if no movies have been found that match the criteria this If statement makes sure something is added
-		if (count == 20 && !foundMovie) {
-			console.log("no movie found");
-			main.appendChild(movieElem);
-		}
-
-
-
-
 	})
 }
 
@@ -135,5 +153,5 @@ function getcolor(vote) {
 	}
 }
 
-therealmain();
 
+therealmain();
