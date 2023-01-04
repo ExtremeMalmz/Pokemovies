@@ -15,7 +15,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 //movie keys
 
 
- Version-3
+
 
 //fantasy key is: 14
 const FANTASYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=14&sort_by=popularity.desc";
