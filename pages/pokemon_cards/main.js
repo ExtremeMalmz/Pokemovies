@@ -1,11 +1,9 @@
 //Webbtjänster - Grupp 1 - Made by Eric Malmström and Anita Olsson
 
 //pokemon cards for the human
-//"https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto"
-const HUMANPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto"];
+const HUMANPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu", "https:pokeapi.co/api/v2/pokemon/ditto","https:pokeapi.co/api/v2/pokemon/bulbasaur","https:pokeapi.co/api/v2/pokemon/turtwig","https:pokeapi.co/api/v2/pokemon/charmander","https:pokeapi.co/api/v2/pokemon/charizard","https:pokeapi.co/api/v2/pokemon/raichu","https:pokeapi.co/api/v2/pokemon/bruxish","https:pokeapi.co/api/v2/pokemon/magikarp","https:pokeapi.co/api/v2/pokemon/hitmonlee","https:pokeapi.co/api/v2/pokemon/lickilicky","https:pokeapi.co/api/v2/pokemon/garbodor"];
 //pokemon cards for the computer
-//"https:pokeapi.co/api/v2/pokemon/stunfisk", "https:pokeapi.co/api/v2/pokemon/paras"
-const COMPUTERPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/pikachu"];
+const COMPUTERPOKEMONLINKS = ["https:pokeapi.co/api/v2/pokemon/natu", "https:pokeapi.co/api/v2/pokemon/paras","https:pokeapi.co/api/v2/pokemon/flapple","https:pokeapi.co/api/v2/pokemon/jynx"];
 //computer and human variables which are equal to the string of their name
 const COMPUTER = "COMPUTER", HUMAN = "HUMAN";
 
