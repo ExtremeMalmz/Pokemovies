@@ -1,12 +1,6 @@
 //TMDB
 ///discover/movie?sort_by=popularity.desc 
 
-document.getElementById("1").innerHTML = localStorage.getItem("pokemonName");
-document.getElementById("2").innerHTML = localStorage.getItem("winOrLose");
-document.getElementById("3").innerHTML = localStorage.getItem("pokemonType");
-document.getElementById("4").innerHTML = localStorage.getItem("totalHealthLeft");
-
-
 const API_KEY = 'api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=vote_average.desc&' + API_KEY;
