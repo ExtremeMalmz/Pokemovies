@@ -9,39 +9,38 @@ h1{
 	box-sizing: border-box;
 }
 
-:root {
-	--primary-color: #22254b;
-	--secondary-color: #373b69;
-}
-
 body {
-	background-color: var(--primary-color);
-	font-family: 'Poppins', sans-serif;
+	background: url('background-image.png') no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+	font-family: 'Yeon Sung', cursive;
 	margin: 0;
-
+	text-align: center;
 }
 
-header {
-	padding: 1rem;
-	display: flex;
-	justify-content: flex-end;
-	background-color: var(--secondary-color);
-}
-
-
-
-main {
+.container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	position: absolute;
+	padding-top: 10%;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%)
+}
+
+.statmessage {
+	color: white;
 }
 
 .movie {
-	width: 300px;
+	width: 200px;
 	margin: 1rem;
 	border-radius: 3px;
 	box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 1);
-	background-color: var(--secondary-color);
+	background-color: cornsilk;
 	position: relative;
 	overflow: hidden;
 }
@@ -51,7 +50,7 @@ main {
 }
 
 .movie-info {
-	color: #eee;
+	color: black;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -64,43 +63,8 @@ main {
 }
 
 .movie-info span {
-	background-color: var(--primary-color);
+	background-color: rgb(70, 151, 217);
 	padding: 0.25rem 0.5rem;
 	border-radius: 3px;
 	font-weight: bold;
-}
-
-.movie-info span.green {
-
-	color: lightgreen;
-}
-
-.movie-info span.orange {
-
-	color: orange;
-}
-
-.movie-info span.red {
-
-	color: red;
-}
-
-
-#tags {
-	width: 80%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	margin: 10px auto;
-}
-
-.tag {
-	color: white;
-	padding: 10px 20px;
-	background-color: orange;
-	border-radius: 50px;
-	margin: 5px;
-	display: inline-block;
-	cursor: pointer;
 }

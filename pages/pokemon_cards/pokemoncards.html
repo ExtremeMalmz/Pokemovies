@@ -4,28 +4,26 @@
 <html>
     <head>
         <meta charset = "UTF-8">
+        <meta name = "Viewport" content = "width = device-width, intial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet">
         <title>
             Pokemon Cards
         </title>
     </head>
-
     <body>
+        <section id="main">
         <div class = "HumanPage">
             <h1>
                 Your Card
             </h1>
 
             <div id = "HumanPokemonCard">
-                <div id = "HumanPokemonCardInformation">
+                <div id = "PokemoncardInfo">
                     <p id = "HumanPokemonName">zasda</p>
                     <p id = "HumanHPStats">xasda</p>
                     <p id = "HumanDefenseStats">asda</p>
                     <p id = "HumanAttackStats">basda</p>
-                </div>
-
-                <div id = "HumanSideFightButton" onclick = "startPokemonBattle()">
-                    <p>Click to fight</p>
                 </div>
 
                 <div id = "HumanPokemonImage">
@@ -40,23 +38,27 @@
             </h1>
 
             <div id = "ComputerPokemonCard">
-                <div id = "ComputerPokemonCardInformation">
+                <div id = "PokemoncardInfo">
                     <p id = "computerPokemonName">zasda</p>
                     <p id = "computerHPStats">xasda</p>
                     <p id = "computerAttackStats">asda</p>
                     <p id = "computerDefenseStats">basda</p>
                 </div>
 
-                <div id = "ComputerSideFightButton" onclick = "startPokemonBattle()">
-                    <p id = "fightButton">Click to fight</p>
-                </div>
 
                 <div id = "ComputerPokemonImage">
                     <img src = "https://media.discordapp.net/attachments/925865166862684180/1052959435728879706/a-big-floppa-meme-meme-is-not-mine-v0-3DgZmo1Nc4kbonSwS6ZrsWzHXOw1SmYsgaUo1c9rmWA.png" id = "computerPokemonImage">
                 </div>
             </div>
-        </div>  
-
-        <script src = "main.js"></script>
+        </div>
+    </section>
+    <div id = "FightButton" onclick = "startPokemonBattle()">
+        <button class="back">
+            <span class="front">
+              Click to fight!
+            </span>
+          </button>
+    </div>  
+        <script src = "main.js"></script>      
     </body>
 </html>

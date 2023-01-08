@@ -1,31 +1,47 @@
 /*Webbtjänster - Grupp 1 - Made by Eric Malmström and Anita Olsson*/
 
-body{
+body {
     /* background image */
-    background-image: url("matrixpurple.gif");
-
-    background-size: 50% 250%;
-
-
-}
-
-.main{
-    /* background colors (red) and text colors (White) */
-   background-color: red;
-   color:white;
-    
-   /*This puts it in the center */
-    margin:auto;
-    margin-top:20%;
-    width:400px;
-    height:150px;
-
-    /* This centers text */
-    line-height: 4;
+    background: url('background-image.png') no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Yeon Sung', cursive;
+    margin: 0;
     text-align: center;
 }
 
-h1 {
-    /* Turns the mouse icon pointer into a pointer icon */
-    cursor:pointer;
+#StartButton {
+    margin: 0;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.back {
+    background: rgb(21, 98, 18);
+    border-radius: 10px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+}
+
+.back:active .front {
+    transform: translateY(-2px);
+}
+
+.front {
+    display: block;
+    padding: 12px 42px;
+    border-radius: 10px;
+    border: 2px solid rgb(153, 225, 89);
+    font-size: 1.25rem;
+    background: rgb(64, 228, 19);
+    color: white;
+    transform: translateY(-6px);
+    font-family: 'Yeon Sung', cursive;
+    text-transform: uppercase;
 }
