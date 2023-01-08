@@ -12,7 +12,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 document.getElementById("1").innerHTML = localStorage.getItem("pokemonName");
 document.getElementById("2").innerHTML = localStorage.getItem("winOrLose");
 document.getElementById("3").innerHTML = localStorage.getItem("pokemonType");
-document.getElementById("4").innerHTML = localStorage.getItem("totalHealthLeft");
+
 
 
 //fantasy key is: 14
@@ -112,7 +112,8 @@ function showMovies(data) {
 			<img src="${IMG_URL + poster_path}" alt="${title}">
 
 			<div class="movie-info">
-				<h3>${title + " - Genre:" + localStorage.getItem("genre")}</h3>
+				<h5>${title}</h5>
+				<span class="genre">${localStorage.getItem("genre")}</span>
 				<span  class="${getcolor(vote_average)}">${vote_average} </span>
 				
 			</div>
