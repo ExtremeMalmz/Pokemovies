@@ -11,19 +11,19 @@ document.getElementById("1").innerHTML = localStorage.getItem("pokemonName");
 document.getElementById("2").innerHTML = localStorage.getItem("winOrLose");
 
 //fantasy key is: 14
-const FANTASYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=14&sort_by=popularity.desc";
+const FANTASYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=14&sort_by=popularity.asc";
 //horror key is: 36
-const HORRORMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=36&sort_by=popularity.desc";
+const HORRORMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=36&sort_by=popularity.asc";
 //action key is: 28
-const ACTIONMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=28&sort_by=popularity.desc";
+const ACTIONMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=28&sort_by=popularity.asc";
 //animation key is: 16
-const ANIMATIONMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=16&sort_by=popularity.desc";
+const ANIMATIONMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=16&sort_by=popularity.asc";
 //documentary key is: 99
-const DOCUMENTARYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=99&sort_by=popularity.desc";
+const DOCUMENTARYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=99&sort_by=popularity.asc";
 //war key is: 10752
-const WARMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=10752&sort_by=popularity.desc";
+const WARMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=10752&sort_by=popularity.asc";
 //drama key is: 18
-const DRAMAMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=18&sort_by=popularity.desc";
+const DRAMAMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=18&sort_by=popularity.asc";
 
 const main = document.getElementById('main');
 const tagsElem = document.getElementById('tags');
@@ -89,6 +89,7 @@ function showMovies(data) {
 	var count = 0;
 	var foundMovie = false;
 	var gameScore = localStorage.getItem("totalHealthLeft") / 10;
+	var moviePosterAdress = "";
 
 	main.innerHTML = '';
 	data.forEach(movie => {
@@ -97,11 +98,20 @@ function showMovies(data) {
 		const movieElem = document.createElement('div');
 		movieElem.classList.add('movie');
 
+		//no image catcher
+		if(poster_path == null){
+			//console.log("no image");
+			moviePosterAdress = "https://i.ytimg.com/vi/yoIYd-ohTOQ/maxresdefault.jpg";
+		}
+		else{
+			moviePosterAdress = IMG_URL + poster_path;
+		}
+		
 		//find the genre
 		//var movieGenre = getMovieGenreByID(genre_ids[0])
 		movieElem.innerHTML =
 			`
-			<img src="${IMG_URL + poster_path}" alt="${title}">
+			<img src="${moviePosterAdress}" alt="${title}">
 
 			<div class="movie-info">
 			<h5>${title}</h5>
