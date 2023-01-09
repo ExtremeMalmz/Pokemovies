@@ -37,7 +37,7 @@ function therealmain() {
 
 function determineAPIkey() {
 	var pokemonType = localStorage.getItem("pokemonType");
-	console.log(pokemonType);
+	//console.log(pokemonType);
 
 	if (localStorage.getItem("pokemonType") == "electric") {
 		localStorage.setItem("genre", "Action");
@@ -75,15 +75,16 @@ function determineAPIkey() {
 
 //show the movies we get from data as respons, we fetch the url 
 function getMovies(url) {
-	console.log(url);
+	//console.log(url);
 	fetch(url).then(res => res.json()).then(data => {
-		console.log(data.results);
+		//console.log(data.results);
 		showMovies(data.results);
 	})
 }
 
+//good for debugging
 function checkIfMovieIsFound() {
-	console.log(document.getElementById("mainmovie").outerHTML);
+	//console.log(document.getElementById("mainmovie").outerHTML);
 }
 
 function showMovies(data) {
@@ -118,7 +119,6 @@ function showMovies(data) {
 			if (!foundMovie) {
 				main.appendChild(movieElem);
 				foundMovie = true;
-
 			}
 		}
 
@@ -126,7 +126,7 @@ function showMovies(data) {
 
 		//if no movies have been found that match the criteria this If statement makes sure something is added
 		if (count == 20 && !foundMovie) {
-			console.log("no movie found");
+			//console.log("no movie found");
 			main.appendChild(movieElem);
 		}
 	})
