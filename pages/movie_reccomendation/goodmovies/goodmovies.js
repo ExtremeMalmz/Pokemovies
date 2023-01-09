@@ -11,7 +11,7 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 document.getElementById("1").innerHTML = localStorage.getItem("pokemonName");
 document.getElementById("2").innerHTML = localStorage.getItem("winOrLose");
-document.getElementById("3").innerHTML = localStorage.getItem("pokemonType");
+document.getElementById("3").innerHTML = "Pokemon type: " + localStorage.getItem("pokemonType");
 
 
 
