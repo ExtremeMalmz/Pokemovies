@@ -9,6 +9,10 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 //movie keys
 
 
+document.getElementById("1").innerHTML = localStorage.getItem("pokemonName");
+document.getElementById("2").innerHTML = localStorage.getItem("winOrLose");
+document.getElementById("3").innerHTML = localStorage.getItem("pokemonType");
+
 
 
 //fantasy key is: 14
@@ -32,45 +36,45 @@ const tagsElem = document.getElementById('tags');
 
 //call the function and pass the url
 
-function therealmain(){
+function therealmain() {
 	movieCategoryAPIkey = determineAPIkey();
 	getMovies(movieCategoryAPIkey);
 }
 
-function determineAPIkey(){
+function determineAPIkey() {
 	var pokemonType = localStorage.getItem("pokemonType");
 	console.log(pokemonType);
 
-	if(localStorage.getItem("pokemonType") == "electric"){
+	if (localStorage.getItem("pokemonType") == "electric") {
 		localStorage.setItem("genre", "Action");
 		return ACTIONMOVIEKEY;
 	}
-	else if(localStorage.getItem("pokemonType") == "normal"){
+	else if (localStorage.getItem("pokemonType") == "normal") {
 		localStorage.setItem("genre", "Animation");
 		return ANIMATIONMOVIEKEY;
 	}
-	else if(localStorage.getItem("pokemonType") == "grass"){
+	else if (localStorage.getItem("pokemonType") == "grass") {
 		localStorage.setItem("genre", "Fantasy");
 		return FANTASYMOVIEKEY;
 	}
-	else if(localStorage.getItem("pokemonType") == "fire"){
+	else if (localStorage.getItem("pokemonType") == "fire") {
 		localStorage.setItem("genre", "Horror");
 		return HORRORMOVIEKEY;
 	}
-	else if(localStorage.getItem("pokemonType") == "water"){
+	else if (localStorage.getItem("pokemonType") == "water") {
 		localStorage.setItem("genre", "Documentary");
 		return DOCUMENTARYMOVIEKEY;
 	}
-	else if(localStorage.getItem("pokemonType") == "fighting"){
+	else if (localStorage.getItem("pokemonType") == "fighting") {
 		localStorage.setItem("genre", "War");
 		return WARMOVIEKEY;
 	}
-	else if(localStorage.getItem("pokemonType") == "poison"){
+	else if (localStorage.getItem("pokemonType") == "poison") {
 		localStorage.setItem("genre", "Drama");
 		return DRAMAMOVIEKEY;
 	}
 	//just to make sure if the type doesnt match
-	else{
+	else {
 		return DRAMAMOVIEKEY;
 	}
 }
@@ -85,14 +89,14 @@ function getMovies(url) {
 	})
 }
 
-function checkIfMovieIsFound(){
+function checkIfMovieIsFound() {
 	console.log(document.getElementById("mainmovie").outerHTML);
 }
 
 function showMovies(data) {
 	var count = 0;
 	var foundMovie = false;
-	var gameScore = localStorage.getItem("totalHealthLeft")/10;
+	var gameScore = localStorage.getItem("totalHealthLeft") / 10;
 
 	main.innerHTML = '';
 	data.forEach(movie => {
@@ -108,35 +112,36 @@ function showMovies(data) {
 			<img src="${IMG_URL + poster_path}" alt="${title}">
 
 			<div class="movie-info">
-				<h3>${title + " - Genre:" + localStorage.getItem("genre")}</h3>
+				<h5>${title}</h5>
+				<span class="genre">${localStorage.getItem("genre")}</span>
 				<span  class="${getcolor(vote_average)}">${vote_average} </span>
 				
 			</div>
 	
 			`
 
- 		 //console.log(gameScore);
-			//console.log(vote_average);
-	
-			//if the movie under or the same as gamescore its set as the winner movie
-			if(vote_average <= gameScore){
-				//adds only one movie
-				if(!foundMovie){
-					main.appendChild(movieElem);
-					foundMovie = true;
-					
-				}
-			}				
-			
-			count++
-			//console.log(count);
+		//console.log(gameScore);
+		//console.log(vote_average);
 
-
-			//if no movies have been found that match the criteria this If statement makes sure something is added
-			if(count==20 && !foundMovie){
-				console.log("no movie found");
+		//if the movie under or the same as gamescore its set as the winner movie
+		if (vote_average <= gameScore) {
+			//adds only one movie
+			if (!foundMovie) {
 				main.appendChild(movieElem);
+				foundMovie = true;
+
 			}
+		}
+
+		count++
+		//console.log(count);
+
+
+		//if no movies have been found that match the criteria this If statement makes sure something is added
+		if (count == 20 && !foundMovie) {
+			console.log("no movie found");
+			main.appendChild(movieElem);
+		}
 	})
 }
 
