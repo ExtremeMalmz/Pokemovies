@@ -6,15 +6,11 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=vote_average.desc&' + API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
-//movie keys
-
-
 document.getElementById("1").innerHTML = localStorage.getItem("pokemonName");
 document.getElementById("2").innerHTML = localStorage.getItem("winOrLose");
 document.getElementById("3").innerHTML = "Pokemon type: " + localStorage.getItem("pokemonType");
 
-
-
+//movie keys
 //fantasy key is: 14
 const FANTASYMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60d2b9ae4db7ab0ca7aa0ca5a17e7&with_genres=14&sort_by=popularity.desc";
 //horror key is: 36
@@ -33,9 +29,7 @@ const DRAMAMOVIEKEY = "https://api.themoviedb.org/3/discover/movie?api_key=d9a60
 const main = document.getElementById('main');
 const tagsElem = document.getElementById('tags');
 
-
 //call the function and pass the url
-
 function therealmain() {
 	movieCategoryAPIkey = determineAPIkey();
 	getMovies(movieCategoryAPIkey);
@@ -79,7 +73,6 @@ function determineAPIkey() {
 	}
 }
 
-
 //show the movies we get from data as respons, we fetch the url 
 function getMovies(url) {
 	console.log(url);
@@ -119,10 +112,6 @@ function showMovies(data) {
 			</div>
 	
 			`
-
-		//console.log(gameScore);
-		//console.log(vote_average);
-
 		//if the movie under or the same as gamescore its set as the winner movie
 		if (vote_average <= gameScore) {
 			//adds only one movie
@@ -133,9 +122,7 @@ function showMovies(data) {
 			}
 		}
 
-		count++
-		//console.log(count);
-
+		count++;
 
 		//if no movies have been found that match the criteria this If statement makes sure something is added
 		if (count == 20 && !foundMovie) {
@@ -144,7 +131,6 @@ function showMovies(data) {
 		}
 	})
 }
-
 
 function getcolor(vote) {
 	if (vote >= 8) {
@@ -155,6 +141,5 @@ function getcolor(vote) {
 		return 'red'
 	}
 }
-
 
 therealmain();

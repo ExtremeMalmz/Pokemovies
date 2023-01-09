@@ -111,8 +111,6 @@ function pokemonAttack(hp, defensepoints, attackpoints) {
     * @param {attackpoints} the offensive pokemons attack points
     */
 
-    //console.log("PARAMETERS-hp: " + hp + " d: " + defensepoints + " a:" + attackpoints);
-
     //random integers for both attack and defense are made here
     var newAttackPoints = Math.floor(Math.random() * attackpoints);
     var newDefensePoints = Math.floor(Math.random() * defensepoints);
@@ -153,7 +151,6 @@ function startPokemonBattle() {
         //console.log("OG HP set");   
         localStorage.setItem("originalHealth", originalHumanPokemonHP);
     }
-
 
     //--- `***GAME STARTS HERE*** ---
     var victory = false;
@@ -228,8 +225,6 @@ function startPokemonBattle() {
 
         location.href = "./../movie_reccomendation/badmovies/badmovies.html";
     }
-
-
 }
 
 main();
